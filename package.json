@@ -1,6 +1,6 @@
 {
   "name": "ngx-wim",
-  "version": "0.1.1",
+  "version": "0.1.0",
   "main": "dist/ngx-wim/bundles/ngx-wim.umd.js",
   "module": "dist/ngx-wim/fesm5/ngx-wim.js",
   "es2015": "dist/ngx-wim/fesm2015/ngx-wim.js",
