@@ -11,9 +11,9 @@
   "license": "SEE LICENSE IN LICENSE",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bunnyfly/ngx-wim"
+    "url": "https://github.com/GrapevineGiving/ngx-wim"
   },
-  "homepage": "https://github.com/bunnyfly/ngx-wim",
+  "homepage": "https://github.com/GrapevineGiving/ngx-wim",
   "peerDependencies": {
     "@angular/common": "^8.2.7",
     "@angular/core": "^8.2.7"
