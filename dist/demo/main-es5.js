@@ -1,36 +1,27 @@
 (window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["main"],{/***/"../../dist/ngx-wim/fesm2015/ngx-wim.js":/*!*************************************************************************!*\
   !*** /home/mauricio/Documents/ngx-wim/dist/ngx-wim/fesm2015/ngx-wim.js ***!
-  \*************************************************************************/ /*! exports provided: WimDirective, WimModule, WimService */ /***/function distNgxWimFesm2015NgxWimJs(module,__webpack_exports__,__webpack_require__){"use strict";__webpack_require__.r(__webpack_exports__);/* harmony export (binding) */__webpack_require__.d(__webpack_exports__,"WimDirective",function(){return WimDirective});/* harmony export (binding) */__webpack_require__.d(__webpack_exports__,"WimModule",function(){return WimModule});/* harmony export (binding) */__webpack_require__.d(__webpack_exports__,"WimService",function(){return WimService});/* harmony import */var _angular_core__WEBPACK_IMPORTED_MODULE_0__=__webpack_require__(/*! @angular/core */"../../node_modules/@angular/core/fesm2015/core.js");/* harmony import */var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__=__webpack_require__(/*! @angular/platform-browser */"../../node_modules/@angular/platform-browser/fesm2015/platform-browser.js");/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */ // Delimiters must be have whitespace or line-boundary around them.
-/** @type {?} */var WHITESPACE_OR_LINE_BREAK=/(?:^|\s|$)/;// Common surrounding characters can sit between the whitespace/line-boundary and the delimiter,
+  \*************************************************************************/ /*! exports provided: WimDirective, WimModule, WimService */ /***/function distNgxWimFesm2015NgxWimJs(module,__webpack_exports__,__webpack_require__){"use strict";__webpack_require__.r(__webpack_exports__);/* harmony export (binding) */__webpack_require__.d(__webpack_exports__,"WimDirective",function(){return WimDirective});/* harmony export (binding) */__webpack_require__.d(__webpack_exports__,"WimModule",function(){return WimModule});/* harmony export (binding) */__webpack_require__.d(__webpack_exports__,"WimService",function(){return WimService});/* harmony import */var _angular_core__WEBPACK_IMPORTED_MODULE_0__=__webpack_require__(/*! @angular/core */"../../node_modules/@angular/core/fesm2015/core.js");/* harmony import */var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__=__webpack_require__(/*! @angular/platform-browser */"../../node_modules/@angular/platform-browser/fesm2015/platform-browser.js");// Delimiters must be have whitespace or line-boundary around them.
+var WHITESPACE_OR_LINE_BREAK=/(?:^|\s|$)/;// Common surrounding characters can sit between the whitespace/line-boundary and the delimiter,
 // like quotes, parens, etc.
 // NOTE: Since HTML escaping may have been performed, need to match both literal and escaped chars.
 // TODO: _*nested*_ delimiter support is hacky. Bolster logic for it.
-/** @type {?} */var ALLOWED_LEFT_SURROUND=/(?:\(|'|&#039;|"|&quot;|&#34;|‘|&#8216;|“|&#8220;|_|<em>|\*|<strong>){0,3}/;/** @type {?} */var ALLOWED_RIGHT_SURROUND=/(?:\)|'|&#039;|"|&quot;|&#34;|’|&#8217;|”|&#8221;|_|<\/em>|\*|<\/strong>|[,.?!:]){0,3}/;// Returns a regex matching the delimiters and the text they wrap. The wrapped text may not include
+var ALLOWED_LEFT_SURROUND=/(?:\(|'|&#039;|"|&quot;|&#34;|‘|&#8216;|“|&#8220;|_|<em>|\*|<strong>){0,3}/;var ALLOWED_RIGHT_SURROUND=/(?:\)|'|&#039;|"|&quot;|&#34;|’|&#8217;|”|&#8221;|_|<\/em>|\*|<\/strong>|[,.?!:]){0,3}/;// Returns a regex matching the delimiters and the text they wrap. The wrapped text may not include
 // the delimiter.
-/** @type {?} */var WRAPPED_INLINE_MATCH=/**
- * @param {?} d
- * @return {?}
- */function WRAPPED_INLINE_MATCH(d){return(// Open delimiter
+var WRAPPED_INLINE_MATCH=function WRAPPED_INLINE_MATCH(d){return(// Open delimiter
 "\\"+d+// Capture the text between delimiters.
 "("+(// Text between starts with non-whitespace.
 "[^\\s"+d+"]")+(// Text between must not contain line-breaks or large-whitespace.
 "(?:[^\\r\\n\\t\\f\\v"+d+"]*")+(// Text between ends with non-whitespace.
 "[^\\s"+d+"])?")+")"+(// Close delimiter
-"\\"+d))};var ɵ0=WRAPPED_INLINE_MATCH;// A full regex to match a delimiter. Capture groups:
+"\\"+d))};// A full regex to match a delimiter. Capture groups:
 // 0: Text before opening delimiter.
 // 1: Text between delimiters.
 // 2: Text after closing delimiter.
-/** @type {?} */var INLINE_DELIMITER_REGEX=/**
- * @param {?} d
- * @return {?}
- */function INLINE_DELIMITER_REGEX(d){return new RegExp("("+WHITESPACE_OR_LINE_BREAK.source+ALLOWED_LEFT_SURROUND.source+")"+WRAPPED_INLINE_MATCH(d)+"("+ALLOWED_RIGHT_SURROUND.source+WHITESPACE_OR_LINE_BREAK.source+")","gm")};var ɵ1=INLINE_DELIMITER_REGEX;/** @type {?} */var STRONG_REGEX=INLINE_DELIMITER_REGEX("*");/** @type {?} */var EM_REGEX=INLINE_DELIMITER_REGEX("_");// There is no general regex that can capture URLs-in-text perfectly. This is our good-enough
+var INLINE_DELIMITER_REGEX=function INLINE_DELIMITER_REGEX(d){return new RegExp("("+WHITESPACE_OR_LINE_BREAK.source+ALLOWED_LEFT_SURROUND.source+")"+WRAPPED_INLINE_MATCH(d)+"("+ALLOWED_RIGHT_SURROUND.source+WHITESPACE_OR_LINE_BREAK.source+")","gm")};var STRONG_REGEX=INLINE_DELIMITER_REGEX("*");var EM_REGEX=INLINE_DELIMITER_REGEX("_");// There is no general regex that can capture URLs-in-text perfectly. This is our good-enough
 // approximation.
 // TODO: Allow URL preceeded/followed by parenthesis, quotes, etc.
 // TODO: Allow IDN/Unicode domains.
-/** @type {?} */var URL_REGEX_PATH_FINAL_CHARS="a-z0-9\\/\\-+&@#%=~_|$";/** @type {?} */var URL_REGEX_FOLLOWING_CHARS="?!:,.";/** @type {?} */var URL_REGEX_PATH_CHARS=URL_REGEX_PATH_FINAL_CHARS+URL_REGEX_FOLLOWING_CHARS;/** @type {?} */var URL_REGEX=new RegExp(// Capture group $1: URL is preceeded by line-boundary or whitespace.
+var URL_REGEX_PATH_FINAL_CHARS="a-z0-9\\/\\-+&@#%=~_|$";var URL_REGEX_FOLLOWING_CHARS="?!:,.";var URL_REGEX_PATH_CHARS=URL_REGEX_PATH_FINAL_CHARS+URL_REGEX_FOLLOWING_CHARS;var URL_REGEX=new RegExp(// Capture group $1: URL is preceeded by line-boundary or whitespace.
 "(^|\\s)"+// Capture group $2: the URL.
 "("+// Optional protocols http://, https://, and ftp://
 "(?:https?://|ftp://)?"+// Domain plus any subdomains
@@ -39,48 +30,18 @@
 // E.g., the final period of "foo.com/bar.baz." shouldn't be included in the URL.
 "(?:["+URL_REGEX_PATH_CHARS+"]*["+URL_REGEX_PATH_FINAL_CHARS+"])?")+// End of URL capture group.
 ")"+(// Capture group $3: URL is followed by line-boundary, whitespace, or "following char."
-"($|\\s|["+URL_REGEX_FOLLOWING_CHARS+"])"),"gi");var WimService=/*#__PURE__*/function(){/**
-     * @param {?} domSanitizer
-     */function WimService(domSanitizer){this.domSanitizer=domSanitizer}/**
-     * @private
-     * @param {?} message
-     * @return {?}
-     */WimService.escapeHtml=function escapeHtml(message){// NOTE: Weird bug workaround. Angular complains `Expression form not supported` with some
+"($|\\s|["+URL_REGEX_FOLLOWING_CHARS+"])"),"gi");var WimService=/*#__PURE__*/function(){function WimService(domSanitizer){this.domSanitizer=domSanitizer}WimService.escapeHtml=function escapeHtml(message){// NOTE: Weird bug workaround. Angular complains `Expression form not supported` with some
 // static methods. Either storing the param as a const before using it or adding `// @dynamic`
 // to the class avoids it.
-/** @type {?} */var msg=message;return msg.replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;")}/**
-     * @param {?} message
-     * @param {?=} options
-     * @return {?}
-     */;var _proto=WimService.prototype;_proto.toHtml=function toHtml(message,options){if(options===void 0){options={}}if(!options.noEscape){message=WimService.escapeHtml(message)}// Links!
+var msg=message;return msg.replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;")};var _proto=WimService.prototype;_proto.toHtml=function toHtml(message,options){if(options===void 0){options={}}if(!options.noEscape){message=WimService.escapeHtml(message)}// Links!
 // TODO: Prevent escaping link chars like &.
-message=message.replace(URL_REGEX,/**
-         * @param {?} x
-         * @param {?} preceeding
-         * @param {?} url
-         * @param {?} following
-         * @return {?}
-         */function(x,preceeding,url,following){// If the URL doesn't have a protocol, prepend the relative protocol, '//'.
-/** @type {?} */var href=url.match(/^((http|https|ftp):\/\/)/i)?url:"//"+url;return preceeding+"<a target=\"_blank\" href=\""+href+"\">"+url+"</a>"+following});// Inline delimiters like *bold* and _italic_.
+message=message.replace(URL_REGEX,function(x,preceeding,url,following){// If the URL doesn't have a protocol, prepend the relative protocol, '//'.
+var href=url.match(/^((http|https|ftp):\/\/)/i)?url:"//"+url;return preceeding+"<a target=\"_blank\" href=\""+href+"\">"+url+"</a>"+following});// Inline delimiters like *bold* and _italic_.
 message=message.replace(STRONG_REGEX,"$1<strong>$2</strong>$3");message=message.replace(EM_REGEX,"$1<em>$2</em>$3");// Breaks
-message=message.replace(/\n/g,"<br>");if(!options.noSanitize){message=this.domSanitizer.sanitize(_angular_core__WEBPACK_IMPORTED_MODULE_0__["SecurityContext"].HTML,message)}return message};return WimService}();WimService.decorators=[{type:_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],args:[{providedIn:"root"}]}];/** @nocollapse */WimService.ctorParameters=function(){return[{type:_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["DomSanitizer"]}]};/** @nocollapse */WimService.ngInjectableDef=Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["\u0275\u0275defineInjectable"])({factory:function WimService_Factory(){return new WimService(Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["\u0275\u0275inject"])(_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["DomSanitizer"]))},token:WimService,providedIn:"root"});if(false){}/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */var WimDirective=/*#__PURE__*/function(){/**
-     * @param {?} elementRef
-     * @param {?} renderer2
-     * @param {?} wimService
-     */function WimDirective(elementRef,renderer2,wimService){this.elementRef=elementRef;this.renderer2=renderer2;this.wimService=wimService}/**
-     * @return {?}
-     */var _proto2=WimDirective.prototype;_proto2.ngOnChanges=function ngOnChanges(){/** @type {?} */var html=this.wimService.toHtml(this.wim||"");this.renderer2.setProperty(this.elementRef.nativeElement,"innerHTML",html)};return WimDirective}();WimDirective.decorators=[{type:_angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],args:[{selector:"[wim]"}]}];/** @nocollapse */WimDirective.ctorParameters=function(){return[{type:_angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]},{type:_angular_core__WEBPACK_IMPORTED_MODULE_0__["Renderer2"]},{type:WimService}]};WimDirective.propDecorators={wim:[{type:_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"],args:["wim"]}]};if(false){}/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */var WimModule=function WimModule(){};WimModule.decorators=[{type:_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],args:[{declarations:[WimDirective],imports:[],exports:[WimDirective],providers:[WimService]}]}];/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+message=message.replace(/\n/g,"<br>");if(!options.noSanitize){message=this.domSanitizer.sanitize(_angular_core__WEBPACK_IMPORTED_MODULE_0__["SecurityContext"].HTML,message)}return message};return WimService}();/** @nocollapse */WimService.ngInjectableDef=Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["\u0275\u0275defineInjectable"])({token:WimService,factory:function WimService_Factory(t){return new(t||WimService)(Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["\u0275\u0275inject"])(_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["DomSanitizer"]))},providedIn:"root"});/*@__PURE__*/Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["\u0275setClassMetadata"])(WimService,[{type:_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],args:[{providedIn:"root"}]}],function(){return[{type:_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["DomSanitizer"]}]},null);var WimDirective=/*#__PURE__*/function(){function WimDirective(elementRef,renderer2,wimService){this.elementRef=elementRef;this.renderer2=renderer2;this.wimService=wimService}var _proto2=WimDirective.prototype;_proto2.ngOnChanges=function ngOnChanges(){var html=this.wimService.toHtml(this.wim||"");this.renderer2.setProperty(this.elementRef.nativeElement,"innerHTML",html)};return WimDirective}();/** @nocollapse */WimDirective.ngDirectiveDef=Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["\u0275\u0275defineDirective"])({type:WimDirective,selectors:[["","wim",""]],factory:function WimDirective_Factory(t){return new(t||WimDirective)(Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["\u0275\u0275directiveInject"])(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]),Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["\u0275\u0275directiveInject"])(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Renderer2"]),Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["\u0275\u0275directiveInject"])(WimService))},inputs:{wim:"wim"},features:[Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["\u0275\u0275NgOnChangesFeature"])()]});/*@__PURE__*/Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["\u0275setClassMetadata"])(WimDirective,[{type:_angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],args:[{selector:"[wim]"}]}],function(){return[{type:_angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]},{type:_angular_core__WEBPACK_IMPORTED_MODULE_0__["Renderer2"]},{type:WimService}]},{wim:[{type:_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"],args:["wim"]}]});var WimModule=function WimModule(){};/** @nocollapse */WimModule.ngModuleDef=Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["\u0275\u0275defineNgModule"])({type:WimModule});/** @nocollapse */WimModule.ngInjectorDef=Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["\u0275\u0275defineInjector"])({factory:function WimModule_Factory(t){return new(t||WimModule)},providers:[WimService],imports:[[]]});/*@__PURE__*/Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["\u0275\u0275setNgModuleScope"])(WimModule,{declarations:[WimDirective],exports:[WimDirective]});/*@__PURE__*/Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["\u0275setClassMetadata"])(WimModule,[{type:_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],args:[{declarations:[WimDirective],imports:[],exports:[WimDirective],providers:[WimService]}]}],null,null);/*
+ * Public API Surface of ngx-wim
  */ /**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * Generated bundle index. Do not edit.
  */ //# sourceMappingURL=ngx-wim.js.map
 /***/},/***/"../../node_modules/raw-loader/dist/cjs.js!./src/app/app.component.html":/*!*********************************************************************************************************!*\
   !*** /home/mauricio/Documents/ngx-wim/node_modules/raw-loader/dist/cjs.js!./src/app/app.component.html ***!
