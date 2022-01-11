@@ -1,17 +1,29 @@
-import { SecurityContext, ɵɵdefineInjectable, ɵɵinject, ɵsetClassMetadata, Injectable, ɵɵdefineDirective, ɵɵdirectiveInject, ElementRef, Renderer2, ɵɵNgOnChangesFeature, Directive, Input, ɵɵdefineNgModule, ɵɵdefineInjector, ɵɵsetNgModuleScope, NgModule } from '@angular/core';
+import { SecurityContext, Injectable, ɵɵdefineInjectable, ɵɵinject, Directive, ElementRef, Renderer2, Input, NgModule } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
 // Delimiters must be have whitespace or line-boundary around them.
+/** @type {?} */
 var WHITESPACE_OR_LINE_BREAK = /(?:^|\s|$)/;
 // Common surrounding characters can sit between the whitespace/line-boundary and the delimiter,
 // like quotes, parens, etc.
 // NOTE: Since HTML escaping may have been performed, need to match both literal and escaped chars.
 // TODO: _*nested*_ delimiter support is hacky. Bolster logic for it.
+/** @type {?} */
 var ALLOWED_LEFT_SURROUND = /(?:\(|'|&#039;|"|&quot;|&#34;|‘|&#8216;|“|&#8220;|_|<em>|\*|<strong>){0,3}/;
+/** @type {?} */
 var ALLOWED_RIGHT_SURROUND = /(?:\)|'|&#039;|"|&quot;|&#34;|’|&#8217;|”|&#8221;|_|<\/em>|\*|<\/strong>|[,.?!:]){0,3}/;
 // Returns a regex matching the delimiters and the text they wrap. The wrapped text may not include
 // the delimiter.
-var WRAPPED_INLINE_MATCH = function (d) {
+/** @type {?} */
+var WRAPPED_INLINE_MATCH = (/**
+ * @param {?} d
+ * @return {?}
+ */
+function (d) {
     // Open delimiter
     return "\\" + d +
         // Capture the text between delimiters.
@@ -29,12 +41,18 @@ var WRAPPED_INLINE_MATCH = function (d) {
         (
         // Close delimiter
         "\\" + d);
-};
+});
+var ɵ0 = WRAPPED_INLINE_MATCH;
 // A full regex to match a delimiter. Capture groups:
 // 0: Text before opening delimiter.
 // 1: Text between delimiters.
 // 2: Text after closing delimiter.
-var INLINE_DELIMITER_REGEX = function (d) {
+/** @type {?} */
+var INLINE_DELIMITER_REGEX = (/**
+ * @param {?} d
+ * @return {?}
+ */
+function (d) {
     return new RegExp('(' +
         WHITESPACE_OR_LINE_BREAK.source +
         ALLOWED_LEFT_SURROUND.source +
@@ -44,16 +62,23 @@ var INLINE_DELIMITER_REGEX = function (d) {
         ALLOWED_RIGHT_SURROUND.source +
         WHITESPACE_OR_LINE_BREAK.source +
         ')', 'gm');
-};
+});
+var ɵ1 = INLINE_DELIMITER_REGEX;
+/** @type {?} */
 var STRONG_REGEX = INLINE_DELIMITER_REGEX('*');
+/** @type {?} */
 var EM_REGEX = INLINE_DELIMITER_REGEX('_');
 // There is no general regex that can capture URLs-in-text perfectly. This is our good-enough
 // approximation.
 // TODO: Allow URL preceeded/followed by parenthesis, quotes, etc.
 // TODO: Allow IDN/Unicode domains.
+/** @type {?} */
 var URL_REGEX_PATH_FINAL_CHARS = 'a-z0-9\\/\\-+&@#%=~_|$';
+/** @type {?} */
 var URL_REGEX_FOLLOWING_CHARS = '?!:,.';
+/** @type {?} */
 var URL_REGEX_PATH_CHARS = URL_REGEX_PATH_FINAL_CHARS + URL_REGEX_FOLLOWING_CHARS;
+/** @type {?} */
 var URL_REGEX = new RegExp(
 // Capture group $1: URL is preceeded by line-boundary or whitespace.
 '(^|\\s)' +
@@ -78,10 +103,21 @@ var WimService = /** @class */ (function () {
     function WimService(domSanitizer) {
         this.domSanitizer = domSanitizer;
     }
-    WimService.escapeHtml = function (message) {
+    /**
+     * @private
+     * @param {?} message
+     * @return {?}
+     */
+    WimService.escapeHtml = /**
+     * @private
+     * @param {?} message
+     * @return {?}
+     */
+    function (message) {
         // NOTE: Weird bug workaround. Angular complains `Expression form not supported` with some
         // static methods. Either storing the param as a const before using it or adding `// @dynamic`
         // to the class avoids it.
+        /** @type {?} */
         var msg = message;
         return msg
             .replace(/</g, '&lt;')
@@ -89,18 +125,36 @@ var WimService = /** @class */ (function () {
             .replace(/"/g, '&quot;')
             .replace(/'/g, '&#039;');
     };
-    WimService.prototype.toHtml = function (message, options) {
+    /**
+     * @param {?} message
+     * @param {?=} options
+     * @return {?}
+     */
+    WimService.prototype.toHtml = /**
+     * @param {?} message
+     * @param {?=} options
+     * @return {?}
+     */
+    function (message, options) {
         if (options === void 0) { options = {}; }
         if (!options.noEscape) {
             message = WimService.escapeHtml(message);
         }
         // Links!
         // TODO: Prevent escaping link chars like &.
-        message = message.replace(URL_REGEX, function (x, preceeding, url, following) {
+        message = message.replace(URL_REGEX, (/**
+         * @param {?} x
+         * @param {?} preceeding
+         * @param {?} url
+         * @param {?} following
+         * @return {?}
+         */
+        function (x, preceeding, url, following) {
             // If the URL doesn't have a protocol, prepend the relative protocol, '//'.
+            /** @type {?} */
             var href = url.match(/^((http|https|ftp):\/\/)/i) ? url : '//' + url;
             return preceeding + "<a target=\"_blank\" href=\"" + href + "\">" + url + "</a>" + following;
-        });
+        }));
         // Inline delimiters like *bold* and _italic_.
         message = message.replace(STRONG_REGEX, '$1<strong>$2</strong>$3');
         message = message.replace(EM_REGEX, '$1<em>$2</em>$3');
@@ -111,63 +165,109 @@ var WimService = /** @class */ (function () {
         }
         return message;
     };
-    /** @nocollapse */ WimService.ngInjectableDef = ɵɵdefineInjectable({ token: WimService, factory: function WimService_Factory(t) { return new (t || WimService)(ɵɵinject(DomSanitizer)); }, providedIn: 'root' });
+    WimService.decorators = [
+        { type: Injectable, args: [{
+                    providedIn: 'root',
+                },] }
+    ];
+    /** @nocollapse */
+    WimService.ctorParameters = function () { return [
+        { type: DomSanitizer }
+    ]; };
+    /** @nocollapse */ WimService.ngInjectableDef = ɵɵdefineInjectable({ factory: function WimService_Factory() { return new WimService(ɵɵinject(DomSanitizer)); }, token: WimService, providedIn: "root" });
     return WimService;
 }());
-/*@__PURE__*/ ɵsetClassMetadata(WimService, [{
-        type: Injectable,
-        args: [{
-                providedIn: 'root',
-            }]
-    }], function () { return [{ type: DomSanitizer }]; }, null);
+if (false) {
+    /**
+     * @type {?}
+     * @private
+     */
+    WimService.prototype.domSanitizer;
+}
 
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
 var WimDirective = /** @class */ (function () {
     function WimDirective(elementRef, renderer2, wimService) {
         this.elementRef = elementRef;
         this.renderer2 = renderer2;
         this.wimService = wimService;
     }
-    WimDirective.prototype.ngOnChanges = function () {
+    /**
+     * @return {?}
+     */
+    WimDirective.prototype.ngOnChanges = /**
+     * @return {?}
+     */
+    function () {
+        /** @type {?} */
         var html = this.wimService.toHtml(this.wim || '');
         this.renderer2.setProperty(this.elementRef.nativeElement, 'innerHTML', html);
     };
-    /** @nocollapse */ WimDirective.ngDirectiveDef = ɵɵdefineDirective({ type: WimDirective, selectors: [["", "wim", ""]], factory: function WimDirective_Factory(t) { return new (t || WimDirective)(ɵɵdirectiveInject(ElementRef), ɵɵdirectiveInject(Renderer2), ɵɵdirectiveInject(WimService)); }, inputs: { wim: "wim" }, features: [ɵɵNgOnChangesFeature()] });
+    WimDirective.decorators = [
+        { type: Directive, args: [{
+                    selector: '[wim]',
+                },] }
+    ];
+    /** @nocollapse */
+    WimDirective.ctorParameters = function () { return [
+        { type: ElementRef },
+        { type: Renderer2 },
+        { type: WimService }
+    ]; };
+    WimDirective.propDecorators = {
+        wim: [{ type: Input, args: ['wim',] }]
+    };
     return WimDirective;
 }());
-/*@__PURE__*/ ɵsetClassMetadata(WimDirective, [{
-        type: Directive,
-        args: [{
-                selector: '[wim]',
-            }]
-    }], function () { return [{ type: ElementRef }, { type: Renderer2 }, { type: WimService }]; }, { wim: [{
-            type: Input,
-            args: ['wim']
-        }] });
+if (false) {
+    /** @type {?} */
+    WimDirective.prototype.wim;
+    /**
+     * @type {?}
+     * @private
+     */
+    WimDirective.prototype.elementRef;
+    /**
+     * @type {?}
+     * @private
+     */
+    WimDirective.prototype.renderer2;
+    /**
+     * @type {?}
+     * @private
+     */
+    WimDirective.prototype.wimService;
+}
 
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
 var WimModule = /** @class */ (function () {
     function WimModule() {
     }
-    /** @nocollapse */ WimModule.ngModuleDef = ɵɵdefineNgModule({ type: WimModule });
-    /** @nocollapse */ WimModule.ngInjectorDef = ɵɵdefineInjector({ factory: function WimModule_Factory(t) { return new (t || WimModule)(); }, providers: [WimService], imports: [[]] });
+    WimModule.decorators = [
+        { type: NgModule, args: [{
+                    declarations: [WimDirective],
+                    imports: [],
+                    exports: [WimDirective],
+                    providers: [WimService],
+                },] }
+    ];
     return WimModule;
 }());
-/*@__PURE__*/ ɵɵsetNgModuleScope(WimModule, { declarations: [WimDirective], exports: [WimDirective] });
-/*@__PURE__*/ ɵsetClassMetadata(WimModule, [{
-        type: NgModule,
-        args: [{
-                declarations: [WimDirective],
-                imports: [],
-                exports: [WimDirective],
-                providers: [WimService],
-            }]
-    }], null, null);
 
-/*
- * Public API Surface of ngx-wim
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 
 /**
- * Generated bundle index. Do not edit.
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 
 export { WimDirective, WimModule, WimService };
